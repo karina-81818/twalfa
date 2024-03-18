@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import CharactersList from '../../components/CharactersList/CharactersList'
+import FavoriteList from '../../components/FavoriteList/FavoriteList'
 import { useEffect, useState } from 'react';
 import styles from './FavoritePage.module.scss'
 
@@ -29,12 +29,12 @@ function FavoritePage (personFavorite) {
         <ul className={styles.listContainer}>
                 {characters.map((item)=>
                     <li key={item.id}>
-                        <CharactersList characters={characters}  name={item.name} image={item.img}  personFavorite={personFavorite} />
+                        <FavoriteList characters={characters}  name={item.name} image={item.img}  personFavorite={personFavorite} />
                         </li>
         )}
-            </ul>:
-<h2 className={styles.comment}>No date</h2>
-}
+        </ul>:
+        <h2 className={styles.comment}>No date</h2>
+        }
         </>
     )
 }
