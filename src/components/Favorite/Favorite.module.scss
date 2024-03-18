@@ -1,12 +1,16 @@
 .container{
     position: relative;
-    width: 35px;
-    height: 35px;
+    width: 55px;
+    height: 55px;
     margin-left: auto;
     left: 0;
     top: 0;
     flex-shrink: 0;
-
+}
+.btn{
+    background-color: var(--color-dark-gray);
+    padding: 0px;
+    border: none;
 }
 .icon{
     width: 100%;

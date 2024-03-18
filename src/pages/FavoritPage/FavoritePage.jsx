@@ -1,17 +1,15 @@
 import { useSelector } from 'react-redux';
-import PlanetList from '../../components/PlanetList/PlanetList'
-import styles from './FavoritePage.module.scss'
+import CharactersList from '../../components/CharactersList/CharactersList'
 import { useEffect, useState } from 'react';
+import styles from './FavoritePage.module.scss'
 
-function FavoritePage () {
-    const [planet, setPlanet] = useState([]);
+function FavoritePage (personFavorite) {
+    const [characters, setCharacters] = useState([]);
     const storeDate = useSelector(state => state.favoriteReduser);
-    
-    console.log(storeDate)
     
     useEffect(()=>{
         const arr = Object.entries(storeDate);
-       
+       console.log(arr)
         if(arr.length){
             const res = arr.map(item => {
                 return{
@@ -19,20 +17,24 @@ function FavoritePage () {
                     ...item[1]
                 }
             })
-            setPlanet(res)
+            setCharacters(res)
         }
     }, [])
 
-       
-
     return(
         <>
-        <h1>FavoritePage</h1>
-        {planet.length 
-        ? <PlanetList planet={planet}/>
-        : <h2 className={styles.comment}>No date</h2>
-    }
-        
+        <h1>Любимые персонажи</h1>
+        {characters.length 
+        ?
+        <ul className={styles.listContainer}>
+                {characters.map((item)=>
+                    <li key={item.id}>
+                        <CharactersList characters={characters}  name={item.name} image={item.img}  personFavorite={personFavorite} />
+                        </li>
+        )}
+            </ul>:
+<h2 className={styles.comment}>No date</h2>
+}
         </>
     )
 }

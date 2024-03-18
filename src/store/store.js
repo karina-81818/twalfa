@@ -10,5 +10,7 @@ const store = createStore(
     );
 store.subscribe(() => {
     setLocalStorage('store', store.getState().favoriteReduser)
+    console.log(store.getState().characterReduser)
 })
+
 export default store;
